@@ -17,9 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BuildingService.Application\BuildingService.Application.csproj" />
-    <ProjectReference Include="..\BuildingService.Db\BuildingService.Db.csproj" />
-    <ProjectReference Include="..\BuildingService.Repository\BuildingService.Repository.csproj" />
+    <ProjectReference Include="..\AudienceService.Application\AudienceService.Application.csproj" />
+    <ProjectReference Include="..\AudienceService.Db\AudienceService.Db.csproj" />
+    <ProjectReference Include="..\AudienceService.Repository\AudienceService.Repository.csproj" />
   </ItemGroup>
 
 </Project>

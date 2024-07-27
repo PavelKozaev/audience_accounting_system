@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using BuildingService.Api.Models;
+using BuildingService.Application.Contracts;
 using BuildingService.Domain;
 using BuildingService.Repository;
 
-namespace BuildingService.Api.Services
+namespace BuildingService.Application.Services
 {
     public class BuildingService : IBuildingService
     {
@@ -25,7 +25,7 @@ namespace BuildingService.Api.Services
         public async Task<BuildingDto> GetBuildingByIdAsync(int id)
         {
             var building = await _repository.GetBuildingByIdAsync(id);
-            if (building == null)
+            if (building == null || building.IsDeleted)
             {
                 throw new KeyNotFoundException("Building not found");
             }
@@ -42,7 +42,7 @@ namespace BuildingService.Api.Services
         public async Task UpdateBuildingAsync(int id, BuildingUpdateDto buildingUpdateDto)
         {
             var building = await _repository.GetBuildingByIdAsync(id);
-            if (building == null)
+            if (building == null || building.IsDeleted)
             {
                 throw new KeyNotFoundException("Building not found");
             }
@@ -53,7 +53,7 @@ namespace BuildingService.Api.Services
         public async Task DeleteBuildingAsync(int id)
         {
             var building = await _repository.GetBuildingByIdAsync(id);
-            if (building == null)
+            if (building == null || building.IsDeleted)
             {
                 throw new KeyNotFoundException("Building not found");
             }

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using BuildingService.Api.Models;
+using BuildingService.Application.Contracts;
 using BuildingService.Domain;
 
-namespace BuildingService.Api.Mapping
+namespace BuildingService.Application.Mapping
 {
     public class MappingProfile : Profile
     {

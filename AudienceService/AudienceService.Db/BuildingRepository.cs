@@ -1,22 +1,22 @@
-﻿using BuildingService.Db;
-using BuildingService.Domain;
+﻿using AudienceService.Domain;
+using AudienceService.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace BuildingService.Repository
+namespace AudienceService.Db
 {
     public class BuildingRepository : IBuildingRepository
     {
-        private readonly BuildingContext _db;
+        private readonly AudienceContext _db;
 
-        public BuildingRepository(BuildingContext db)
+        public BuildingRepository(AudienceContext db)
         {
-            _db = db;
+            _db = db;            
         }
 
         public async Task<List<Building>> GetBuildingsAsync()
         {
             return await _db.Buildings
-                .Where(b => !b.IsDeleted)
+                .Where(a => !a.IsDeleted)
                 .AsNoTracking()
                 .ToListAsync();
         }
@@ -25,7 +25,6 @@ namespace BuildingService.Repository
         {
             return await _db.Buildings.FirstOrDefaultAsync(b => b.Id == id && !b.IsDeleted);
         }
-
         public async Task AddBuildingAsync(Building building)
         {
             _db.Buildings.Add(building);

@@ -1,6 +1,6 @@
-﻿using BuildingService.Api.Models;
+﻿using BuildingService.Application.Contracts;
 
-namespace BuildingService.Api.Services
+namespace BuildingService.Application.Services
 {
     public interface IBuildingService
     {

@@ -1,7 +1,7 @@
-using BuildingService.Application.Mapping;
-using BuildingService.Application.Services;
-using BuildingService.Db;
-using BuildingService.Repository;
+using AudienceService.Application.Mapping;
+using AudienceService.Application.Services;
+using AudienceService.Db;
+using AudienceService.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,11 +13,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DbContext>(options =>
+builder.Services.AddDbContext<AudienceContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddScoped<IAudienceRepository, AudienceRepository>();
 builder.Services.AddScoped<IBuildingRepository, BuildingRepository>();
-builder.Services.AddScoped<IBuildingService, BuildingService.Application.Services.BuildingService>();
+
+builder.Services.AddScoped<IAudienceService, AudienceService.Application.Services.AudienceService>();
+builder.Services.AddScoped<IBuildingService, BuildingService>();
 
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
