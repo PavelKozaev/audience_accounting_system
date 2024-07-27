@@ -12,9 +12,7 @@ namespace AudienceService.Application.Mapping
             CreateMap<Audience, AudienceCreateDto>().ReverseMap();
             CreateMap<Audience, AudienceUpdateDto>().ReverseMap();
 
-            CreateMap<Building, BuildingDto>().ReverseMap();
-            CreateMap<Building, BuildingCreateDto>().ReverseMap();
-            CreateMap<Building, BuildingUpdateDto>().ReverseMap();
+            CreateMap<Building, BuildingDto>().ReverseMap();            
         }
     }
 }

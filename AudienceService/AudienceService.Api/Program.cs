@@ -2,6 +2,8 @@ using AudienceService.Application.Mapping;
 using AudienceService.Application.Services;
 using AudienceService.Db;
 using AudienceService.Repository;
+using AudienceService.Integrations;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,26 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AudienceContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddMassTransit(x =>
+{
+    x.AddConsumer<BuildingEventConsumer>();
+
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(builder.Configuration["RabbitMQ:Host"], "/", h =>
+        {
+            h.Username(builder.Configuration["RabbitMQ:Username"]);
+            h.Password(builder.Configuration["RabbitMQ:Password"]);
+        });
+
+        // Подключение к обменнику
+        cfg.ReceiveEndpoint("building-event-queue", e =>
+        {
+            e.ConfigureConsumer<BuildingEventConsumer>(context);
+        });
+    });
+});
 
 builder.Services.AddScoped<IAudienceRepository, AudienceRepository>();
 builder.Services.AddScoped<IBuildingRepository, BuildingRepository>();

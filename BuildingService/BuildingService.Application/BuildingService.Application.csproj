@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BuildingService.Db\BuildingService.Db.csproj" />
+    <ProjectReference Include="..\BuildingService.Integrations\BuildingService.Integrations.csproj" />
     <ProjectReference Include="..\BuildingService.Repository\BuildingService.Repository.csproj" />
   </ItemGroup>
 

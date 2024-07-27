@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AudienceService.Repository"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudienceService.Application", "AudienceService.Application\AudienceService.Application.csproj", "{FF35E4CC-ED15-459A-B69F-332021433CC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudienceService.Integrations", "AudienceService.Integrations\AudienceService.Integrations.csproj", "{D7E757D2-E616-4002-BEFC-A6D746208E99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FF35E4CC-ED15-459A-B69F-332021433CC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF35E4CC-ED15-459A-B69F-332021433CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF35E4CC-ED15-459A-B69F-332021433CC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7E757D2-E616-4002-BEFC-A6D746208E99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7E757D2-E616-4002-BEFC-A6D746208E99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7E757D2-E616-4002-BEFC-A6D746208E99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7E757D2-E616-4002-BEFC-A6D746208E99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

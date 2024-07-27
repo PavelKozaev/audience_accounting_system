@@ -6,8 +6,8 @@ namespace AudienceService.Application.Services
     {
         Task<List<BuildingDto>> GetBuildingsAsync();
         Task<BuildingDto> GetBuildingByIdAsync(int id);
-        Task<int> AddBuildingAsync(BuildingCreateDto buildingCreateDto);
-        Task UpdateBuildingAsync(int id, BuildingUpdateDto buildingUpdateDto);
-        Task DeleteBuildingAsync(int id);
+        Task<int> AddBuildingAsync(BuildingDto buildingDto);
+        Task UpdateBuildingAsync(int id, BuildingDto buildingDto);
+        Task DeleteBuildingAsync(int id);              
     }
 }

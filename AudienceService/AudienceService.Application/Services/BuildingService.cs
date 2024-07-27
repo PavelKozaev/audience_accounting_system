@@ -34,21 +34,21 @@ namespace AudienceService.Application.Services
             return _mapper.Map<BuildingDto>(building);
         }
 
-        public async Task<int> AddBuildingAsync(BuildingCreateDto buildingCreateDto)
+        public async Task<int> AddBuildingAsync(BuildingDto buildingDto)
         {
-            var building = _mapper.Map<Building>(buildingCreateDto);
+            var building = _mapper.Map<Building>(buildingDto);
             await _buildingRepository.AddBuildingAsync(building);
             return building.Id;
         }
 
-        public async Task UpdateBuildingAsync(int id, BuildingUpdateDto buildingUpdateDto)
+        public async Task UpdateBuildingAsync(int id, BuildingDto buildingDto)
         {
             var building = await _buildingRepository.GetBuildingByIdAsync(id);
             if (building == null || building.IsDeleted)
             {
                 throw new KeyNotFoundException("Building not found");
             }
-            _mapper.Map(buildingUpdateDto, building);
+            _mapper.Map(buildingDto, building);
             await _buildingRepository.UpdateBuildingAsync(building);
         }
 
@@ -59,14 +59,14 @@ namespace AudienceService.Application.Services
             {
                 throw new KeyNotFoundException("Building not found");
             }
-
+                        
+            await _buildingRepository.DeleteBuildingAsync(building);
+            
             var audiences = await _audienceRepository.GetAudiencesByBuildingIdAsync(id);
             foreach (var audience in audiences)
             {
                 await _audienceRepository.DeleteAudienceAsync(audience);
             }
-
-            await _buildingRepository.DeleteBuildingAsync(building);
         }
     }
 }
