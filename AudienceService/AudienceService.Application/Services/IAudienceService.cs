@@ -9,5 +9,6 @@ namespace AudienceService.Application.Services
         Task<int> AddAudienceAsync(AudienceCreateDto audienceCreateDto);
         Task UpdateAudienceAsync(int id, AudienceUpdateDto audienceUpdateDto);
         Task DeleteAudienceAsync(int id);
+        Task<List<AudienceDto>> GetAudiencesByBuildingIdAsync(int buildingId);
     }
 }

@@ -9,6 +9,6 @@ namespace AudienceService.Repository
         Task AddAudienceAsync(Audience audience);
         Task UpdateAudienceAsync(Audience audience);
         Task DeleteAudienceAsync(Audience audience);
-        Task<List<Audience>> GetAudiencesByBuildingIdAsync(int buildingId);
+        Task<List<Audience>> GetAudiencesByBuildingIdAsync(int buildingId);        
     }
 }

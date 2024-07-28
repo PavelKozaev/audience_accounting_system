@@ -49,5 +49,12 @@ namespace AudienceService.Api.Controllers
             await _service.DeleteAudienceAsync(id);
             return NoContent();
         }
+
+        [HttpGet("building/{buildingId}")]
+        public async Task<ActionResult<List<AudienceDto>>> GetAudiencesByBuildingId(int buildingId)
+        {
+            var audiences = await _service.GetAudiencesByBuildingIdAsync(buildingId);
+            return Ok(audiences);
+        }
     }
 }

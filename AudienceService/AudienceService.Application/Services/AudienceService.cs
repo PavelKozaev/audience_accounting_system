@@ -74,5 +74,11 @@ namespace AudienceService.Application.Services
             }
             await _audienceRepository.DeleteAudienceAsync(audience);
         }
+
+        public async Task<List<AudienceDto>> GetAudiencesByBuildingIdAsync(int buildingId)
+        {            
+            var audiences = await _audienceRepository.GetAudiencesByBuildingIdAsync(buildingId);
+            return _mapper.Map<List<AudienceDto>>(audiences);
+        }
     }
 }
