@@ -1,6 +1,6 @@
 ﻿using AudienceService.Application.Contracts;
 using AudienceService.Application.Services;
-using AudienceService.Integrations.Messages;
+using Common.Messages;
 using MassTransit;
 
 namespace AudienceService.Integrations

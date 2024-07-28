@@ -1,4 +1,4 @@
-﻿namespace BuildingService.Integrations.Messages
+﻿namespace Common.Messages
 {
     public class BuildingEventMessage
     {

@@ -15,4 +15,10 @@
     <ProjectReference Include="..\BuildingService.Repository\BuildingService.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Common.Messages">
+      <HintPath>..\..\Common.Messages\Common.Messages\bin\Debug\net8.0\Common.Messages.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

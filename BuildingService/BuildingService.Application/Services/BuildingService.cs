@@ -2,9 +2,8 @@
 using BuildingService.Application.Contracts;
 using BuildingService.Domain;
 using BuildingService.Integrations;
-using BuildingService.Integrations.Messages;
 using BuildingService.Repository;
-using MassTransit;
+using Common.Messages;
 
 namespace BuildingService.Application.Services
 {
