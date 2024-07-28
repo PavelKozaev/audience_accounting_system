@@ -22,19 +22,16 @@ builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<BuildingEventConsumer>();
 
-    x.UsingRabbitMq((context, cfg) =>
+    x.UsingRabbitMq((context, configurator) =>
     {
-        cfg.Host(builder.Configuration["RabbitMQ:Host"], "/", h =>
+        configurator.Host(new Uri(builder.Configuration["RabbitMQ:Host"]!), h =>
         {
             h.Username(builder.Configuration["RabbitMQ:Username"]);
             h.Password(builder.Configuration["RabbitMQ:Password"]);
+
         });
 
-        // Подключение к обменнику
-        cfg.ReceiveEndpoint("building-event-queue", e =>
-        {
-            e.ConfigureConsumer<BuildingEventConsumer>(context);
-        });
+        configurator.ConfigureEndpoints(context);
     });
 });
 

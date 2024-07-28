@@ -4,6 +4,7 @@ using BuildingService.Domain;
 using BuildingService.Integrations;
 using BuildingService.Integrations.Messages;
 using BuildingService.Repository;
+using MassTransit;
 
 namespace BuildingService.Application.Services
 {
@@ -11,7 +12,7 @@ namespace BuildingService.Application.Services
     {
         private readonly IBuildingRepository _repository;
         private readonly IMapper _mapper;
-        private readonly IMessageSender _messageSender;
+        private readonly IMessageSender _messageSender;        
 
         public BuildingService(IBuildingRepository repository, IMapper mapper, IMessageSender messageSender)
         {

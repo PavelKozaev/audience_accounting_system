@@ -2,11 +2,9 @@ using BuildingService.Application.Mapping;
 using BuildingService.Application.Services;
 using BuildingService.Db;
 using BuildingService.Integrations;
-using BuildingService.Integrations.Messages;
 using BuildingService.Repository;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
-using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,19 +20,17 @@ builder.Services.AddDbContext<BuildingContext>(options =>
 
 builder.Services.AddMassTransit(x =>
 {
-    x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
+    x.UsingRabbitMq((context, configurator) =>
     {
-        var rabbitMQConfig = builder.Configuration.GetSection("RabbitMQ");
-        cfg.Host(rabbitMQConfig["Host"], "/", h =>
+        configurator.Host(new Uri(builder.Configuration["RabbitMQ:Host"]!), h =>
         {
-            h.Username(rabbitMQConfig["Username"]);
-            h.Password(rabbitMQConfig["Password"]);
+            h.Username(builder.Configuration["RabbitMQ:Username"]);
+            h.Password(builder.Configuration["RabbitMQ:Password"]);
+
         });
 
-        // Настройка обменника
-        cfg.Message<BuildingEventMessage>(x => x.SetEntityName("building-event-message"));
-        cfg.Publish<BuildingEventMessage>(x => x.ExchangeType = ExchangeType.Topic);        
-    }));
+        configurator.ConfigureEndpoints(context);
+    });
 });
 
 builder.Services.AddScoped<IBuildingRepository, BuildingRepository>();
