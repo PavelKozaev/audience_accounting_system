@@ -59,14 +59,14 @@ namespace AudienceService.Application.Services
             {
                 throw new KeyNotFoundException("Building not found");
             }
-                        
-            await _buildingRepository.DeleteBuildingAsync(building);
-            
+
             var audiences = await _audienceRepository.GetAudiencesByBuildingIdAsync(id);
             foreach (var audience in audiences)
             {
                 await _audienceRepository.DeleteAudienceAsync(audience);
             }
+
+            await _buildingRepository.DeleteBuildingAsync(building);  
         }
     }
 }

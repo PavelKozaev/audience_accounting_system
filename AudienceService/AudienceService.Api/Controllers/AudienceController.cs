@@ -1,5 +1,6 @@
 ﻿using AudienceService.Application.Contracts;
 using AudienceService.Application.Services;
+using AudienceService.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AudienceService.Api.Controllers

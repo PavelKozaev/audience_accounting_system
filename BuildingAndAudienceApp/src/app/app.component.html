@@ -2,11 +2,22 @@
   <button mat-icon-button class="mr-4" routerLink="/">
     <mat-icon>home</mat-icon>
   </button>
-  <span>Audience App</span>
-  <span class="example-spacer"></span>  
-</mat-toolbar>
-<div class="w-full px-36 py-8">
-  <router-outlet>
+  <span class="toolbar-title">Audience App</span>
+  <span class="example-spacer"></span>
+
+  <!-- Navigation buttons with icons and text -->
+  <button mat-raised-button routerLink="/building-list" class="nav-button">
+    <mat-icon>apartment</mat-icon>
+    <span>Здания</span>
+  </button>
+ 
+  <button mat-raised-button routerLink="/audience-list" class="nav-button">
+    <mat-icon>school</mat-icon>
+    <span>Аудитории</span>
+  </button>
   
-  </router-outlet>
+</mat-toolbar>
+
+<div class="w-full px-36 py-8">
+  <router-outlet></router-outlet>
 </div>

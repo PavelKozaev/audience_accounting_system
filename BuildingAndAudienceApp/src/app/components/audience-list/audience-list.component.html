@@ -1,13 +1,17 @@
-
     <div class="mat-elevation-z8 w-full">
         <div class="flex justify-end p-8">
-            <button routerLink="/create-building" mat-raised-button color="primary">Добавить здание</button>
+            <button routerLink="/create-audience" mat-raised-button color="primary">Добавить аудиторию</button>
         </div>
-        <table mat-table [dataSource]="buildingList">
+        <table mat-table [dataSource]="audienceList">
                   
             <ng-container matColumnDef="id">
               <th mat-header-cell *matHeaderCellDef> Id </th>
               <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="buildingId">
+              <th mat-header-cell *matHeaderCellDef> BuildingId </th>
+              <td mat-cell *matCellDef="let element"> {{element.buildingId}} </td>
             </ng-container>
                 
             <ng-container matColumnDef="name">
@@ -15,14 +19,24 @@
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
               </ng-container>
         
-              <ng-container matColumnDef="address">
-                <th mat-header-cell *matHeaderCellDef> Адрес </th>
-                <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+              <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef> Тип помощения </th>
+                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
               </ng-container>
 
-              <ng-container matColumnDef="floors">
-                <th mat-header-cell *matHeaderCellDef> Этажность </th>
-                <td mat-cell *matCellDef="let element"> {{element.floors}} </td>
+              <ng-container matColumnDef="capacity">
+                <th mat-header-cell *matHeaderCellDef> Вместимость </th>
+                <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="floor">
+                <th mat-header-cell *matHeaderCellDef> Этаж </th>
+                <td mat-cell *matCellDef="let element"> {{element.floor}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="number">
+                <th mat-header-cell *matHeaderCellDef> Номер </th>
+                <td mat-cell *matCellDef="let element"> {{element.number}} </td>
               </ng-container>
         
               <ng-container matColumnDef="action">
