@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AudienceService.Db.Migrations
 {
     [DbContext(typeof(AudienceContext))]
-    [Migration("20240728225411_Initialization")]
+    [Migration("20240729122515_Initialization")]
     partial class Initialization
     {
         /// <inheritdoc />

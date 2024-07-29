@@ -19,10 +19,17 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup>	
     <ProjectReference Include="..\BuildingService.Application\BuildingService.Application.csproj" />
     <ProjectReference Include="..\BuildingService.Db\BuildingService.Db.csproj" />
     <ProjectReference Include="..\BuildingService.Repository\BuildingService.Repository.csproj" />
+	  
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Common.Messages">
+      <HintPath>..\..\Common.Messages\Common.Messages\bin\Debug\net8.0\Common.Messages.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
